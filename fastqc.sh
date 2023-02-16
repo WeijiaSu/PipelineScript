@@ -22,9 +22,10 @@ module load samtools
 dir="/data/zhanglab/Weijia_Su/illumina_Raw_Data/Mustafa_021423/"
 
 
+
 #Get the sample name file list
 
-#ls $dir"*_R1_001.fastq.gz" | sed 's/_R1_001.fastq.gz//' > $dir"sampleNames.txt"
+ls $dir"*_R1_001.fastq.gz" | sed 's/_R1_001.fastq.gz//' > $dir"sampleNames.txt"
 
 #This command uses ls to list all the _R1.fastq.gz files in the /path/to/reads directory, and then uses sed to remove the _R1.fastq.gz suffix from the file names and write the resulting names to a file called input_files.txt. Note that this assumes that all your sample files follow the naming convention of having _R1.fastq.gz and _R2.fastq.gz suffixes.
 
