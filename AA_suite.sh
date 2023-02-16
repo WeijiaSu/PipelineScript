@@ -3,7 +3,8 @@
 ## Modify this job script accordingly and submit with the command:
 ##    sbatch HPC.sbatch
 #SBATCH --nodes=1   # number of nodes
-#SBATCH --ntasks-per-node=16   # 16 processor core(s) per node
+#SBATCH --ntasks-per-node=8 
+#SBATCH --cpus-per-task=4
 #SBATCH --job-name='AA_suite'
 #SBATCH --partition="all"
 #SBATCH --mem=100000
@@ -17,6 +18,5 @@
 
 AASuite="/data/zhanglab/Weijia_Su/software/AmpliconSuite-pipeline/"
 ReadDir="/data/zhanglab/Weijia_Su/illumina_Raw_Data/Shun_011923/01.RawData/Circle_1/"
-$AASuite"PrepareAA.py" -s Circle_1 -t 16 --cnvkit_dir /path/to/cnvkit.py --fastqs $ReadDir"Circle_1_CKDL230000534-1A_HTLHHDSX5_L1_1.fq.gz" $ReadDir"Circle_1_CKDL230000534-1A_HTLHHDSX5_L1_2.fq.gz" --ref hg38
 
-
+$AASuite"PrepareAA.py" -s Circle_1 -t 32 --cnvkit_dir /data/zhanglab/Weijia_Su/anaconda3/bin/cnvkit.py --bam /data/zhanglab/Weijia_Su/eccDNA/Shun_011923/hg38.fa_Circle_1.bam --ref hg38 --run_AA --run_AC  
