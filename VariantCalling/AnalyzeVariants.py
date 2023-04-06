@@ -8,3 +8,13 @@ def Read_vcf_annotation(vcf_file):
 	print(f.shape)
 
 Read_vcf_annotation("A1.EGFR.filter.vcf.vepAnn.txt")
+
+with open('A1.EGFR.filter.vcf.vepAnn.txt_summary.txt', 'r') as f:
+    start = False
+    for line in f:
+        if "xxx" in line:
+            start = True
+        elif "yyy" in line:
+            start = False
+        elif start:
+            print(line.strip())
