@@ -18,8 +18,8 @@ name=$1
 #gatk VariantFiltration -R hg38.fa -V $name".EGFR.vcf" -O $name".EGFR.filter.vcf" --filter-expression "QUAL < 30.0" --filter-name "LowQual" --filter-expression "DP < 10" --filter-name "LowCoverage";
 #
 echo "`date +"%m-%d-%Y %H:%M:%S"` Annotate EGFR "
-/data/zhanglab/Weijia_Su/software/ensembl-vep/vep -i $name".EGFR.filter.vcf" -o $name".EGFR.filter.vcf.vepAnn.txt" --cache --dir_cache /data/zhanglab/Weijia_Su/software/ensembl-vep/cache/ --assembly GRCh38 --everything
-
+/data/zhanglab/Weijia_Su/software/ensembl-vep/vep -i $name".EGFR.filter.vcf" -o $name".EGFR.filter.vcf.vepAnn.txt" --cache --dir_cache /data/zhanglab/Weijia_Su/software/ensembl-vep/cache/ --assembly GRCh38 --everything --force_overwrite --stats_text --fork 32 --allele_number --check_existing --gencode_basic
+echo "`date +"%m-%d-%Y %H:%M:%S"` EGFR finished"
 
 ##################### For whole genome
 
@@ -30,5 +30,6 @@ echo "`date +"%m-%d-%Y %H:%M:%S"` Annotate EGFR "
 #gatk HaplotypeCaller -R hg38.fa -I $name".cs.rmdup.RG.bam" -O $name".vcf.gz";
 #echo "`date +"%m-%d-%Y %H:%M:%S"` filter whole genome "
 #gatk VariantFiltration -R hg38.fa -V $name".vcf.gz" -O $name".vcf.filter.gz" --filter-expression "QUAL < 30.0" --filter-name "LowQual" --filter-expression "DP < 10" --filter-name "LowCoverage";
-echo "`date +"%m-%d-%Y %H:%M:%S"` Annotate whole genome "
-/data/zhanglab/Weijia_Su/software/ensembl-vep/vep -i $name".vcf.filter.gz" -o $name".vcf.filter.vep.txt" --cache --dir_cache /data/zhanglab/Weijia_Su/software/ensembl-vep/cache/ --assembly GRCh38 --everything
+
+/data/zhanglab/Weijia_Su/software/ensembl-vep/vep -i $name".vcf.filter.gz" -o $name".vcf.filter.vep.txt" --cache --dir_cache /data/zhanglab/Weijia_Su/software/ensembl-vep/cache/ --assembly GRCh38 --everything --force_overwrite --stats_text --fork 32 --allele_number --check_existing --gencode_basic
+ echo "`date +"%m-%d-%Y %H:%M:%S"` Whole genome finished "

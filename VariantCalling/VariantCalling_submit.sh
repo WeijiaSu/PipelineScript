@@ -18,9 +18,8 @@
 ## LOAD MODULES, INSERT CODE, AND RUN YOUR PROGRAMS HERE
 
 module load samtools
-source ~/.bashrc
 
-dir="/data/zhanglab/Weijia_Su/illumina_Raw_Data/Mustafa_022023/"
+dir="/data/zhanglab/Weijia_Su/illumina_Raw_Data/GBM_blood_WGS/00_fastq/"
 
 input_list=$dir"sampleNames.txt"
 input_file=$(sed -n "${SLURM_ARRAY_TASK_ID}p" $input_list)
