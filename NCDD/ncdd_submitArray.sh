@@ -20,7 +20,7 @@
 
 conda activate base
 
-dir="/data/zhanglab/Weijia_Su/Nanopore_Raw_Data/20230328_PC9_Osimertinib_resis_Rapid_genome_seq/"
+dir="DIRECTORY TO THE RAW FASTQ FILES"
 hg38="/data/zhanglab/Weijia_Su/Genomes/Human/hg38.fa"
 
 files=$dir*.fastq
