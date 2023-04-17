@@ -32,12 +32,13 @@ def getCons(filename):
 
 files=os.listdir("./")
 files=[i for i in files if i[-26:]=="EGFR.filter.vcf.vepAnn.txt"]
+files=sorted(files)
 F0=pd.read_table(files[0],skiprows=range(106))
 c=list(F0.columns)+["sample"]
 combine=pd.DataFrame(columns=c)
 print(combine)
-for f in files:
-	fi=getCons(f)
+for f_i in files:
+	fi=getCons(f_i)
 	combine=combine.append(fi)
 
 print(combine)
